@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+
+<head>
+    <title>Document</title>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div ng-controller="exampleController" class="container">
+        <div class="my-5">
+            <div class="form-group">
+                <label for="tcNo">TC Kimlik Numarası</label>
+                <input id="tcNo" type="text" class="form-control" aria-describedby="tcNoHelp" tc-no-validation
+                    ng-model="tcNo.text" ui-mask="99999999999">
+
+                <small id="tcNoHelp" class="form-text text-muted">
+                    {{tcNo.message}}
+                </small>
+            </div>
+        </div>
+    </div>
+
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/angular-ui-mask/dist/mask.min.js"></script>
+
+    <script src="example.js"></script>
+</body>
+
+</html>
