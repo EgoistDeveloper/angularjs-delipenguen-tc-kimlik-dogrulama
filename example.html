@@ -23,6 +23,14 @@
                     {{tcNo.message}}
                 </small>
             </div>
+
+            <button class="btn btn-primary" ng-click="tcNoGenerate()">
+                Rastgele TC No Oluştur
+            </button>
+
+            <button class="btn btn-secondary" ng-click="tcNo.text = ''" ng-if="tcNo.isValid">
+                Temizle
+            </button>
         </div>
     </div>
 
