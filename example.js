@@ -63,9 +63,9 @@ app.directive('tcNoValidation', function () {
         if (value.length === 0) {
             result = {
                 isValid: false,
-                message: 'TC Kimlik No giriniz.'
+                message: ''
             };
-        } 
+        }
         
         if (value.length > 0 && value.length !== 11) {
             result = {
