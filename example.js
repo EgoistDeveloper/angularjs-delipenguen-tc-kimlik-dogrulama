@@ -51,52 +51,64 @@ app.directive('tcNoValidation', function () {
         return tenthValue;
     }
 
+    function vlidateTcNo(value) {
+        var result = {
+            isValid: true,
+            message: null
+        };
+
+        // prevent ui-mask masks
+        value = value.replace(/\D/g, '');
+        
+        if (value.length === 0) {
+            result = {
+                isValid: false,
+                message: 'TC Kimlik No giriniz.'
+            };
+        } 
+        
+        if (value.length > 0 && value.length !== 11) {
+            result = {
+                isValid: false,
+                message: 'TC Kimlik No 11 karakter olmalıdır.'
+            };
+        } 
+        
+        if (value.length > 9) {
+            if (tenthValue(value) != value.substr(9, 1)) {
+                result = {
+                    isValid: false,
+                    message: 'Geçerli bir TC Kimlik No giriniz.'
+                };
+            }
+        }
+        
+        if (value.length === 11) {
+            if (getLastChar(value) !== String(value).substr(10, 1)) {
+                result = {
+                    isValid: false,
+                    message: 'Geçerli bir TC Kimlik No giriniz.'
+                };
+            }
+        }
+        
+        if (value.substr(0, 1) === '0') {
+            result = {
+                isValid: false,
+                message: 'TC Kimlik Numarasının ilk karakteri 0 (Sıfır) olamaz.'
+            };
+        }
+
+        return result;
+    }
+
     return {
         restrict: 'A',
-        link: function (scope, elm, attrs) {
+        link: function (scope, element, attrs) {
             scope.$watch(attrs.ngModel, function (newValue, oldValue) {
                 var ngModelNameFull = attrs.ngModel,
                     ngModelName = ngModelNameFull.split('.'),
-                    result = {
-                        isValid: false,
-                        message: null
-                    };
-
-                if (elm.val().length === 0) {
-                    result = {
-                        isValid: false,
-                        message: 'TC Kimlik No giriniz.'
-                    };
-                } else if (elm.val().length > 0 && elm.val().length !== 11) {
-                    result = {
-                        isValid: false,
-                        message: 'TC Kimlik No 11 karakter olmalıdır.'
-                    };
-                } else if (elm.val().length > 9) {
-                    if (tenthValue(elm.val()) != elm.val().substr(9, 1)) {
-                        result = {
-                            isValid: false,
-                            message: 'Geçerli bir TC Kimlik No giriniz.'
-                        };
-                    }
-                } else if (elm.val().length === 11) {
-                    if (getLastChar(elm.val()) !== String(elm.val()).substr(10, 1)) {
-                        result = {
-                            isValid: false,
-                            message: 'Geçerli bir TC Kimlik No giriniz.'
-                        };
-                    }
-                } else if (elm.val().substr(0, 1) === '0') {
-                    result = {
-                        isValid: false,
-                        message: 'TC Kimlik Numarasının ilk karakteri 0 (Sıfır) olamaz.'
-                    };
-                } else {
-                    result = {
-                        isValid: true,
-                        message: null
-                    };
-                }
+                    result = vlidateTcNo(element.val());
 
                 scope[ngModelName[0]].isValid = result.isValid;
                 scope[ngModelName[0]].message = result.message;
@@ -108,7 +120,7 @@ app.directive('tcNoValidation', function () {
 
 app.controller('exampleController', function exampleController($scope, $http) {
     $scope.tcNo = {
-        isValid: false,
+        isValid: true,
         message: null
     };
 
@@ -117,10 +129,10 @@ app.controller('exampleController', function exampleController($scope, $http) {
      * 
      * @source https://gist.github.com/canerbasaran/9440338
      */
-     $scope.tcNoGenerate = function tcNoGenerate() {
+    $scope.tcNoGenerate = function tcNoGenerate() {
         var tcno = '' + Math.floor(900000001 * Math.random() + 1e8),
-            list = tcno.split('').map(function (x) {
-                return parseInt(x, 10)
+            list = tcno.split('').map(function (t) {
+                return parseInt(t, 10)
             }),
             odd = list[0] + list[2] + list[4] + list[6] + list[8],
             even = list[1] + list[3] + list[5] + list[7],

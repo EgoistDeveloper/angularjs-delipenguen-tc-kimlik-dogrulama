@@ -22,8 +22,11 @@
         <div class="my-5">
             <div class="form-group">
                 <label for="tcNo">TC Kimlik Numarası</label>
-                <input id="tcNo" type="text" class="form-control" aria-describedby="tcNoHelp" tc-no-validation
-                    ng-model="tcNo.text" ui-mask="99999999999">
+                <input id="tcNo" type="text" class="form-control" 
+                    aria-describedby="tcNoHelp" 
+                    ng-model="tcNo.text" 
+                    tc-no-validation 
+                    ui-mask="99999999999">
 
                 <small id="tcNoHelp" class="form-text text-muted">
                     {{tcNo.message}}
