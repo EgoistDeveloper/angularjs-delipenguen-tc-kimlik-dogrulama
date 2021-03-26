@@ -118,14 +118,14 @@ app.controller('exampleController', function exampleController($scope, $http) {
      * @source https://gist.github.com/canerbasaran/9440338
      */
      $scope.tcNoGenerate = function tcNoGenerate() {
-        var tcno = "" + Math.floor(900000001 * Math.random() + 1e8),
-            list = tcno.split("").map(function (t) {
-                return parseInt(t, 10)
+        var tcno = '' + Math.floor(900000001 * Math.random() + 1e8),
+            list = tcno.split('').map(function (x) {
+                return parseInt(x, 10)
             }),
-            tek = list[0] + list[2] + list[4] + list[6] + list[8],
-            cift = list[1] + list[3] + list[5] + list[7],
-            tc10 = (7 * tek - cift) % 10;
+            odd = list[0] + list[2] + list[4] + list[6] + list[8],
+            even = list[1] + list[3] + list[5] + list[7],
+            tc10 = (7 * odd - even) % 10;
 
-        $scope.tcNo.text = tcno + ("" + tc10) + ("" + (cift + tek + tc10) % 10);
+        $scope.tcNo.text = tcno + ('' + tc10) + ('' + (even + odd + tc10) % 10);
     };
 });
