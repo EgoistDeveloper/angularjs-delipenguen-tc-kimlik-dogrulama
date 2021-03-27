@@ -1,5 +1,9 @@
 var app = angular.module('app', ['ui.mask']);
 
+app.config(['uiMask.ConfigProvider', function (uiMaskConfigProvider) {
+    uiMaskConfigProvider.clearOnBlur(true);
+}]);
+
 app.controller('exampleController', function exampleController($scope, $http) {
     $scope.tcNo = {
         isValid: true,

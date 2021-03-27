@@ -28,7 +28,7 @@
                     aria-describedby="tcNo2Help" 
                     ng-model="tcNo2.text" 
                     tc-no-validation 
-                    placeholder="TC No Giriniz" 
+                    placeholder="TC Kimlik No" 
                     minlength="11" maxlength="11">
 
                 <small id="tcNo2Help" class="form-text text-muted">
@@ -53,10 +53,12 @@
             <div class="form-group">
                 <label for="tcNo">TC Kimlik Numarası Doğrulama (ui-mask ile)</label>
                 <input id="tcNo" type="text" class="form-control" 
-                    aria-describedby="tcNoHelp" 
+                    aria-describedby="tcNoHelp"
+                    ui-mask="99999999999" 
                     ng-model="tcNo.text" 
+                    placeholder="TC Kimlik No"
                     tc-no-validation 
-                    ui-mask="99999999999">
+                    ui-mask-placeholder="">
 
                 <small id="tcNoHelp" class="form-text text-muted">
                     {{tcNo.message}}
