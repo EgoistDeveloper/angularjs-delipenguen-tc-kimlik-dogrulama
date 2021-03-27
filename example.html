@@ -19,9 +19,39 @@
 
 <body ng-cloak>
     <div ng-controller="exampleController" class="container">
-        <div class="my-5">
+        <div class="my-5 py-5">
+            <h1>#1</h1>
+
             <div class="form-group">
-                <label for="tcNo">TC Kimlik Numarası</label>
+                <label for="tcNo2">TC Kimlik Numarası Doğrulama (sadece directive)</label>
+                <input id="tcNo2" type="text" class="form-control" 
+                    aria-describedby="tcNo2Help" 
+                    ng-model="tcNo2.text" 
+                    tc-no-validation 
+                    placeholder="TC No Giriniz" 
+                    minlength="11" maxlength="11">
+
+                <small id="tcNo2Help" class="form-text text-muted">
+                    {{tcNo2.message}}
+                </small>
+            </div>
+
+            <button class="btn btn-primary" ng-click="tcNoGenerate(tcNo2)">
+                Rastgele TC No Oluştur
+            </button>
+
+            <button class="btn btn-secondary" ng-click="tcNo2.text = ''" ng-if="tcNo2.isValid">
+                Temizle
+            </button>
+        </div>
+
+        <hr>
+
+        <div class="my-5">
+            <h1>#2</h1>
+
+            <div class="form-group">
+                <label for="tcNo">TC Kimlik Numarası Doğrulama (ui-mask ile)</label>
                 <input id="tcNo" type="text" class="form-control" 
                     aria-describedby="tcNoHelp" 
                     ng-model="tcNo.text" 
@@ -33,7 +63,7 @@
                 </small>
             </div>
 
-            <button class="btn btn-primary" ng-click="tcNoGenerate()">
+            <button class="btn btn-primary" ng-click="tcNoGenerate(tcNo)">
                 Rastgele TC No Oluştur
             </button>
 
