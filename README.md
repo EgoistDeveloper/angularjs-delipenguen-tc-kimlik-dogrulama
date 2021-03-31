@@ -7,7 +7,7 @@ AngularJS için TC kimlik numarası doğrulama directive'i
 **İkinci** örnekte **[angular-ui-mask](https://github.com/angular-ui/ui-mask)** kullanılmıştır. Bu durumda öncelik ui-mask'indir.
 - İlk önce `mask` ile 11 haneli `99999999999` pattern'ı doğrulanmalıdır. Doğrulandıktan sonra TC no directive'i çalışır.
 - `ui-mask` kendi placeholder'ını kullanır.
-- `ui-mask`'in ayarları ayrıca değiştirilebilir.
+- `ui-mask`'in ayarları ayrıca aşağıdaki gibi değiştirilebilir.
 
 ```js
 app.config(['uiMask.ConfigProvider', function(uiMaskConfigProvider) {
