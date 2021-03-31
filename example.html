@@ -18,8 +18,14 @@
 </head>
 
 <body ng-cloak>
-    <div ng-controller="exampleController" class="container">
-        <div class="my-5 py-5">
+    <div ng-controller="exampleController" class="container mb-5 pb-5">
+        <div class="my-4 py-4">
+            <h1 class="text-center mb-4">
+                AngularJS ile TC kimlik numarası doğrulama örnekleri
+            </h1>
+    
+            <hr>
+
             <h1>#1</h1>
 
             <div class="form-group">
@@ -47,7 +53,7 @@
 
         <hr>
 
-        <div class="my-5">
+        <div class="my-4 py-4">
             <h1>#2</h1>
 
             <div class="form-group">
@@ -72,6 +78,39 @@
             <button class="btn btn-secondary" ng-click="tcNo.text = ''" ng-if="tcNo.isValid">
                 Temizle
             </button>
+        </div>
+
+        <hr>
+
+        <div class="my-4 py-4">
+            <h1>#3</h1>
+
+            <div class="row">
+                <div class="col-lg-6 col-md-12 mt-5" ng-repeat="customer in form.customers track by $index">
+                    <div class="form-group">
+                        <label for="tcNo-{{$index}}">TC Kimlik Numarası Doğrulama (nested model[{{$index}}])</label>
+                        <input id="tcNo-{{$index}}" type="text" class="form-control" 
+                            aria-describedby="tcNoHelp-{{$index}}"
+                            ui-mask="99999999999" 
+                            ng-model="customer.tcNo.text" 
+                            placeholder="TC Kimlik No"
+                            tc-no-validation 
+                            ui-mask-placeholder="">
+        
+                        <small id="tcNoHelp-{{$index}}" class="form-text text-muted">
+                            {{customer.tcNo.message}}
+                        </small>
+                    </div>
+        
+                    <button class="btn btn-info" ng-click="tcNoGenerate(customer.tcNo)">
+                        Rastgele TC No Oluştur
+                    </button>
+        
+                    <button class="btn btn-secondary" ng-click="customer.tcNo.text = ''" ng-if="customer.tcNo.isValid">
+                        Temizle
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 

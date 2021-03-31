@@ -1,15 +1,58 @@
 var app = angular.module('app', ['ui.mask']);
 
-
 app.controller('exampleController', function exampleController($scope, $http) {
+    // only directive example model
     $scope.tcNo = {
         isValid: true,
         message: null
     };
 
+    // with ui-mask example model
     $scope.tcNo2 = {
         isValid: true,
         message: null
+    };
+
+    // nested example model
+    $scope.form = {
+        customers: [
+            {
+                name: null,
+                surname: null,
+                birtDae: null,
+                tcNo: {
+                    isValid: true,
+                    message: null
+                }
+            },
+            {
+                name: null,
+                surname: null,
+                birtDae: null,
+                tcNo: {
+                    isValid: true,
+                    message: null
+                }
+            },
+            {
+                name: null,
+                surname: null,
+                birtDae: null,
+                tcNo: {
+                    isValid: true,
+                    message: null
+                }
+            },
+            {
+                name: null,
+                surname: null,
+                birtDae: null,
+                tcNo: {
+                    isValid: true,
+                    message: null
+                }
+            },
+        ]
     };
 
     /**

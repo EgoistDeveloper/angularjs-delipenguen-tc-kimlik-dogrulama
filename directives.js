@@ -104,14 +104,25 @@ app.directive('tcNoValidation', function () {
 
     return {
         restrict: 'A',
+        require: 'ngModel',
         link: function (scope, element, attrs) {
             scope.$watch(attrs.ngModel, function (newValue, oldValue) {
                 var ngModelNameFull = attrs.ngModel,
                     ngModelName = ngModelNameFull.split('.'),
                     result = vlidateTcNo(element.val());
 
-                scope[ngModelName[0]].isValid = result.isValid;
-                scope[ngModelName[0]].message = result.message;
+                // for nested models
+                if (ngModelName.length > 2){
+                    let parent = scope[ngModelName[0]];
+
+                    if (parent !== undefined){
+                        parent[ngModelName[1]].isValid = result.isValid;
+                        parent[ngModelName[1]].message = result.message;
+                    }
+                } else {
+                    scope[ngModelName[0]].isValid = result.isValid;
+                    scope[ngModelName[0]].message = result.message;
+                }
             });
         }
     };
