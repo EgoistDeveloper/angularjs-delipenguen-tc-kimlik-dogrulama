@@ -116,11 +116,11 @@ app.directive('tcNoValidation', function () {
                     let parent = scope[ngModelName[0]];
 
                     if (parent !== undefined){
-                        parent[ngModelName[1]].isValid = result.isValid;
+                        parent[ngModelName[1]].$valid = result.isValid;
                         parent[ngModelName[1]].message = result.message;
                     }
                 } else {
-                    scope[ngModelName[0]].isValid = result.isValid;
+                    scope[ngModelName[0]].$valid = result.isValid;
                     scope[ngModelName[0]].message = result.message;
                 }
             });

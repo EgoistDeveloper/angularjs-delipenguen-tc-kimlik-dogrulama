@@ -3,13 +3,13 @@ var app = angular.module('app', ['ui.mask']);
 app.controller('exampleController', function exampleController($scope, $http) {
     // only directive example model
     $scope.tcNo = {
-        isValid: true,
+        $valid: true,
         message: null
     };
 
     // with ui-mask example model
     $scope.tcNo2 = {
-        isValid: true,
+        $valid: true,
         message: null
     };
 
@@ -21,7 +21,7 @@ app.controller('exampleController', function exampleController($scope, $http) {
                 surname: null,
                 birtDae: null,
                 tcNo: {
-                    isValid: true,
+                    $valid: true,
                     message: null
                 }
             },
@@ -30,7 +30,7 @@ app.controller('exampleController', function exampleController($scope, $http) {
                 surname: null,
                 birtDae: null,
                 tcNo: {
-                    isValid: true,
+                    $valid: true,
                     message: null
                 }
             },
@@ -39,7 +39,7 @@ app.controller('exampleController', function exampleController($scope, $http) {
                 surname: null,
                 birtDae: null,
                 tcNo: {
-                    isValid: true,
+                    $valid: true,
                     message: null
                 }
             },
@@ -48,7 +48,7 @@ app.controller('exampleController', function exampleController($scope, $http) {
                 surname: null,
                 birtDae: null,
                 tcNo: {
-                    isValid: true,
+                    $valid: true,
                     message: null
                 }
             },
