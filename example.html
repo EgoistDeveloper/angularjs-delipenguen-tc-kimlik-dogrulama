@@ -46,7 +46,7 @@
                 Rastgele TC No Oluştur
             </button>
 
-            <button class="btn btn-secondary" ng-click="tcNo2.text = ''" ng-if="tcNo2.isValid">
+            <button class="btn btn-secondary" ng-click="tcNo2.text = ''" ng-if="tcNo2.$valid">
                 Temizle
             </button>
         </div>
@@ -75,7 +75,7 @@
                 Rastgele TC No Oluştur
             </button>
 
-            <button class="btn btn-secondary" ng-click="tcNo.text = ''" ng-if="tcNo.isValid">
+            <button class="btn btn-secondary" ng-click="tcNo.text = ''" ng-if="tcNo.$valid">
                 Temizle
             </button>
         </div>
@@ -106,7 +106,7 @@
                         Rastgele TC No Oluştur
                     </button>
         
-                    <button class="btn btn-secondary" ng-click="customer.tcNo.text = ''" ng-if="customer.tcNo.isValid">
+                    <button class="btn btn-secondary" ng-click="customer.tcNo.text = ''" ng-if="customer.tcNo.$valid">
                         Temizle
                     </button>
                 </div>
