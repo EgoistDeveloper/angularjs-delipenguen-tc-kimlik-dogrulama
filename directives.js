@@ -51,7 +51,7 @@ app.directive('tcNoValidation', function () {
         return tenthValue;
     }
 
-    function vlidateTcNo(value) {
+    function validateTcNo(value) {
         var result = {
             isValid: true,
             message: null
@@ -109,7 +109,7 @@ app.directive('tcNoValidation', function () {
             scope.$watch(attrs.ngModel, function (newValue, oldValue) {
                 var ngModelNameFull = attrs.ngModel,
                     ngModelName = ngModelNameFull.split('.'),
-                    result = vlidateTcNo(element.val());
+                    result = validateTcNo(element.val());
 
                 // for nested models
                 if (ngModelName.length > 2){
