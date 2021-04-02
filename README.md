@@ -7,14 +7,8 @@ AngularJS için TC kimlik numarası doğrulama directive'i
 **İkinci** örnekte **[angular-ui-mask](https://github.com/angular-ui/ui-mask)** kullanılmıştır. Bu durumda öncelik ui-mask'indir.
 - İlk önce `mask` ile 11 haneli `99999999999` pattern'ı doğrulanmalıdır. Doğrulandıktan sonra TC no directive'i çalışır.
 - `ui-mask` kendi placeholder'ını kullanır.
-- `ui-mask`'in ayarları ayrıca aşağıdaki gibi değiştirilebilir.
+- `ui-mask`'in ayarları `tcNoValidation` directive'inin çalışma şeklini etkileyebilir.
 
-```js
-app.config(['uiMask.ConfigProvider', function(uiMaskConfigProvider) {
-    uiMaskConfigProvider.clearOnBlur(false);
-    uiMaskConfigProvider.eventsToHandle(['input', 'keyup', 'click', 'focus']);
-}]);
-```
 
 # Algoritma
 
@@ -26,10 +20,14 @@ app.config(['uiMask.ConfigProvider', function(uiMaskConfigProvider) {
 - Kural-5: İlk 10 basamak arasındaki algoritma, 11. basamağı vermelidir.
 - İşlem: 1. 2. 3. 4. 5. 6. 7. 8. 9. ve 10. hanelerin toplamından elde edilen sonucun 10′a bölümünden (Mod 10) kalan, bize 11. haneyi verir.
 
+
 # Uyarı
 
 Bu directive inputa girilen değeri algoritmik olarak doğrular. Girilen değerin gerçekten birine ait olduğu veya geçerli olup olmadığı bilgisini **[NVI SOAP API](https://tckimlik.nvi.gov.tr/Service/KPSPublic.asmx)** ile öğrenmek mümkün. TC no kontrolü için API bizden tc no, ad, soyad, ve doğum yılı bilgilerini istiyor.
 
-## Örnek kütüphaneler
+Ayrıca form validation sadece client tarafında değil aynı zamanda backend tarafında da yapılmalıdır.
+
+
+# Backend için kütüphaneler
 
 - **[PHP](https://github.com/EgoistDeveloper/tccheck)**
