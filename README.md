@@ -26,8 +26,3 @@ AngularJS için TC kimlik numarası doğrulama directive'i
 Bu directive inputa girilen değeri algoritmik olarak doğrular. Girilen değerin gerçekten birine ait olduğu veya geçerli olup olmadığı bilgisini **[NVI SOAP API](https://tckimlik.nvi.gov.tr/Service/KPSPublic.asmx)** ile öğrenmek mümkün. TC no kontrolü için API bizden tc no, ad, soyad, ve doğum yılı bilgilerini istiyor.
 
 Ayrıca form validation sadece client tarafında değil aynı zamanda backend tarafında da yapılmalıdır.
-
-
-# Backend için kütüphaneler
-
-- **[PHP](https://github.com/EgoistDeveloper/tccheck)**
